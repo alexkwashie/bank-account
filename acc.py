@@ -26,17 +26,34 @@ class Account:
 
 ##########################################
 #INHEREITANCE                                                   #
+# i.e Creating a sub class from a base class.      #
+#  its has its own methods like seen below too.   #                                              #
 ##########################################
-class Checking(Account):
 
+class Checking(Account):
+    #Doc string
+    '''The is used to give more info about the class and what id does'''
+    #Data Members:
+    #All class & instance variables are data members in a class
+
+    type = 'Checking' #class variable: can use in many functions in a class object
+
+    #this is a class Contructor
     def __init__(self, filepath, fee):
         Account.__init__(self, filepath)
-        self.fee = fee
+        self.fee = fee #use instance variable in an init for the class objectself.
 
+    #this is a class method
     def transfer(self, amount):
         self.balance = self.balance - amount - self.fee
 
-ichecking = Checking("balance.txt", 3.10)
-ichecking.transfer(100)
+ichecking = Checking("balance.txt", 2) # this an Object insatnce with a file path
+ichecking.transfer(50)
 ichecking.commit()
-print(ichecking.balance)
+
+#This is an example of instantiation
+# Johns_acc = Checking("johns-account.txt", 2)
+
+
+print(ichecking.balance, "Account type:", ichecking.type)
+print(ichecking.__doc__)#print doc string info
